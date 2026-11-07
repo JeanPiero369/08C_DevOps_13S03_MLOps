@@ -64,7 +64,6 @@ def check_contract(df: pd.DataFrame, require_target: bool = True) -> list[dict]:
 
     for col, allowed in CATEGORIES.items():
         add("category", col, df[col].notnull() & ~df[col].isin(allowed), f"fuera de {sorted(allowed)}")
-
     # Regla: una casa no puede haberse construido en el futuro
     year = pd.to_numeric(df["year_built"], errors="coerce")
     add("future", "year_built", year > datetime.now().year, "año de construcción en el futuro")
