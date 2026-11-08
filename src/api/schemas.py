@@ -50,6 +50,7 @@ class BatchPredictionRequest(BaseModel):
         }
     )
 
+
 class PredictionResponse(BaseModel):
     predicted_price: float = Field(..., description="Predicted house price in dollars")
     confidence_interval: List[float] = Field(..., description="90% confidence interval [lower, upper]")
